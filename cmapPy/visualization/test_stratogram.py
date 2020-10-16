@@ -8,7 +8,7 @@ import unittest
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import stratogram
+from . import stratogram
 
 
 class Test(unittest.TestCase):

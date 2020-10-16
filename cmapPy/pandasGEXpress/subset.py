@@ -79,7 +79,7 @@ def subset_main(args):
 
         if (exclude_rid is not None) or (exclude_cid is not None):
             msg = "exclude_{rid,cid} args not currently supported for parse_gctx."
-            raise(Exception(msg))
+            raise Exception
 
         logger.info("Using hyperslab selection functionality of parse_gctx...")
         out_gct = parse_gctx.parse(args.in_path, rid=rid, cid=cid)

@@ -233,8 +233,8 @@ def parse_into_3_df(file_path, num_data_rows, num_data_cols, num_row_metadata, n
 
 def assemble_row_metadata(full_df, num_col_metadata, num_data_rows, num_row_metadata):
     # Extract values
-    row_metadata_row_inds = range(num_col_metadata + 1, num_col_metadata + num_data_rows + 1)
-    row_metadata_col_inds = range(1, num_row_metadata + 1)
+    row_metadata_row_inds = list(range(num_col_metadata + 1, num_col_metadata + num_data_rows + 1))
+    row_metadata_col_inds = list(range(1, num_row_metadata + 1))
     row_metadata = full_df.iloc[row_metadata_row_inds, row_metadata_col_inds]
 
     # Create index from the first column of full_df (after the filler block)
@@ -256,8 +256,8 @@ def assemble_row_metadata(full_df, num_col_metadata, num_data_rows, num_row_meta
 def assemble_col_metadata(full_df, num_col_metadata, num_row_metadata, num_data_cols):
 
     # Extract values
-    col_metadata_row_inds = range(1, num_col_metadata + 1)
-    col_metadata_col_inds = range(num_row_metadata + 1, num_row_metadata + num_data_cols + 1)
+    col_metadata_row_inds = list(range(1, num_col_metadata + 1))
+    col_metadata_col_inds = list(range(num_row_metadata + 1, num_row_metadata + num_data_cols + 1))
     col_metadata = full_df.iloc[col_metadata_row_inds, col_metadata_col_inds]
 
     # Transpose so that samples are the rows and headers are the columns
@@ -281,8 +281,8 @@ def assemble_col_metadata(full_df, num_col_metadata, num_row_metadata, num_data_
 
 def assemble_data(full_df, num_col_metadata, num_data_rows, num_row_metadata, num_data_cols):
     # Extract values
-    data_row_inds = range(num_col_metadata + 1, num_col_metadata + num_data_rows + 1)
-    data_col_inds = range(num_row_metadata + 1, num_row_metadata + num_data_cols + 1)
+    data_row_inds = list(range(num_col_metadata + 1, num_col_metadata + num_data_rows + 1))
+    data_col_inds = list(range(num_row_metadata + 1, num_row_metadata + num_data_cols + 1))
     data = full_df.iloc[data_row_inds, data_col_inds]
 
     # Create index from the first column of full_df (after the filler block)

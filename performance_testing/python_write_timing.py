@@ -23,7 +23,7 @@ row_spaces = [978, 10174]
 
 for c in col_spaces:
 	for r in row_spaces:
-		curr_gctoo = sg.subset_gctoo(big_gctoo, ridx = range(0, r), cidx=range(0,c))
+		curr_gctoo = sg.subset_gctoo(big_gctoo, ridx = list(range(0, r)), cidx=list(range(0,c)))
 		# gct writing 
 		out_fname = "write_test_n" + str(c) + "x" + str(r) + ".gct"
 		start = time.clock()

@@ -267,7 +267,7 @@ class TestFastCorr(unittest.TestCase):
             c = numpy.corrcoef(t, u)[0,1]
             print(c)
             check_nominal_nans[i] = c
-        print(check_nominal_nans - r[:,1])
+        print((check_nominal_nans - r[:,1]))
         logger.debug("calculate entries that would be nan - check_nominal_nans:  {}".format(check_nominal_nans))
         self.assertTrue(numpy.allclose(check_nominal_nans, r[:, 1]))
         self.assertTrue(numpy.allclose(check_nominal_nans, r[1, :]))
@@ -294,7 +294,7 @@ class TestFastCorr(unittest.TestCase):
             c = numpy.corrcoef(t, u)[0,1]
             print(c)
             check_nominal_nans[i] = c
-        print(check_nominal_nans - r[:,2])
+        print((check_nominal_nans - r[:,2]))
         logger.debug("calculate entries that would be nan - check_nominal_nans:  {}".format(check_nominal_nans))
         self.assertTrue(numpy.allclose(check_nominal_nans, r[:, 2]))
         self.assertTrue(numpy.allclose(check_nominal_nans, r[2, :]))
@@ -305,7 +305,7 @@ class TestFastCorr(unittest.TestCase):
         z = numpy.zeros((x.shape[0], x.shape[1]+2))
         z[:, :y.shape[1]] = y
         for i in range(y.shape[1], x.shape[1]+2):
-            t = (i+1) * numpy.array(range(1, z.shape[0]+1))
+            t = (i+1) * numpy.array(list(range(1, z.shape[0]+1)))
             if i%2 == 0:
                 z[:, i] = t
             else:

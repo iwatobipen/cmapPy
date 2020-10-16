@@ -412,7 +412,7 @@ def build_mismatched_common_meta_report(common_meta_df_shapes, sources, all_meta
 
     all_report_df = pd.concat(report_df_list, axis=0)
     all_report_df["orig_rid"] = all_report_df.index
-    all_report_df.index = pd.Index(range(all_report_df.shape[0]), name="index")
+    all_report_df.index = pd.Index(list(range(all_report_df.shape[0])), name="index")
     logger.debug("all_report_df.shape:  {}".format(all_report_df.shape))
     logger.debug("all_report_df.index:  {}".format(all_report_df.index))
     logger.debug("all_report_df.columns:  {}".format(all_report_df.columns))

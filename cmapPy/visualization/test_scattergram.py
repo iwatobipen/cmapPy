@@ -8,7 +8,7 @@ import unittest
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import scattergram
+from . import scattergram
 
 
 class Test(unittest.TestCase):

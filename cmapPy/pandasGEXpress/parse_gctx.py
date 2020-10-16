@@ -264,7 +264,7 @@ def get_ordered_idx(id_type, id_list, meta_df, sort_idx):
     """
     if meta_df is not None:
         if id_type is None:
-            id_list = range(0, len(list(meta_df.index)))
+            id_list = list(range(0, len(list(meta_df.index))))
         elif id_type == "id":
             lookup = {x: i for (i,x) in enumerate(meta_df.index)}
             id_list = [lookup[str(i)] for i in id_list]
@@ -290,7 +290,7 @@ def parse_metadata_df(dim, meta_group, convert_neg_666):
     # read values from hdf5 & make a DataFrame
     header_values = {}
     array_index = 0
-    for k in meta_group.keys():
+    for k in list(meta_group.keys()):
         curr_dset = meta_group[k]
         temp_array = np.empty(curr_dset.shape, dtype=curr_dset.dtype)
         curr_dset.read_direct(temp_array)

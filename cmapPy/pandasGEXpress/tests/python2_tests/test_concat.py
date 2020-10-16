@@ -287,8 +287,8 @@ class TestConcat(unittest.TestCase):
         pd.util.testing.assert_frame_equal(out_meta4, empty_meta)
 
         #metadata has duplicates but index is unique
-        meta5 = pd.DataFrame({"rhd1":[0,0,1]}, index=range(3))
-        meta6 = pd.DataFrame({"rhd1":[0,0,1]}, index=range(3))
+        meta5 = pd.DataFrame({"rhd1":[0,0,1]}, index=list(range(3)))
+        meta6 = pd.DataFrame({"rhd1":[0,0,1]}, index=list(range(3)))
         out_meta5, _ = cg.build_common_all_meta_df([meta5, meta6], [], False)
         logger.debug("metadata has duplicates but index is unique - out_meta5:\n{}".format(out_meta5))
         self.assertEqual((3,1), out_meta5.shape, "metadata contains duplicates but index is unique - should have been kept")

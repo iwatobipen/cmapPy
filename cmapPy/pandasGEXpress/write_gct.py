@@ -89,11 +89,11 @@ def write_top_half(f, row_metadata_df, col_metadata_df, metadata_null, filler_nu
     top_half_df.iloc[0, :] = np.hstack(("id", row_metadata_df.columns.values, col_metadata_df.index.values))
 
     # Insert the chds
-    top_half_df.iloc[range(1, top_half_df.shape[0]), 0] = col_metadata_df.columns.values
+    top_half_df.iloc[list(range(1, top_half_df.shape[0])), 0] = col_metadata_df.columns.values
 
     # Insert the column metadata, but first convert to strings and replace NaNs
-    col_metadata_indices = (range(1, top_half_df.shape[0]),
-                            range(1 + row_metadata_df.shape[1], top_half_df.shape[1]))
+    col_metadata_indices = (list(range(1, top_half_df.shape[0])),
+                            list(range(1 + row_metadata_df.shape[1], top_half_df.shape[1])))
     # pd.DataFrame.at to insert into dataframe(python3)
     top_half_df.at[col_metadata_indices[0], col_metadata_indices[1]] = (
         col_metadata_df.astype(str).replace("nan", value=metadata_null).T.values)
@@ -123,13 +123,13 @@ def write_bottom_half(f, row_metadata_df, data_df, data_null, data_float_format,
 
     #create the full bottom half by combining with the above with the matrix data
     bottom_half_df = pd.concat([left_bottom_half_df, data_df.reset_index(drop=True)], axis=1)
-    bottom_half_df.columns = range(bottom_half_df.shape[1])
+    bottom_half_df.columns = list(range(bottom_half_df.shape[1]))
 
     # Insert the rids
     bottom_half_df.iloc[:, 0] = row_metadata_df.index.values
 
     # Insert the row metadata, but first convert to strings and replace NaNs
-    row_metadata_col_indices = range(1, 1 + row_metadata_df.shape[1])
+    row_metadata_col_indices = list(range(1, 1 + row_metadata_df.shape[1]))
     bottom_half_df.iloc[:, row_metadata_col_indices] = (
         row_metadata_df.astype(str).replace("nan", value=metadata_null).values)
 

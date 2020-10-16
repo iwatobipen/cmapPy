@@ -6,7 +6,7 @@ Created on Sep 30, 2019
 '''
 import unittest
 
-import cohort_view
+from . import cohort_view
 import matplotlib.pyplot as plt
 import pandas as pd
 

@@ -263,7 +263,7 @@ class TestParseGctx(unittest.TestCase):
         # test that ID's are not converted to numeric
         expected_rids = [str(i) for i in range(3)]
         row_dset = {"id": MockHdf5Dset(expected_rids, str),
-                    "other_meta": MockHdf5Dset(range(3, 6), str)}
+                    "other_meta": MockHdf5Dset(list(range(3, 6)), str)}
         r = parse_gctx.parse_metadata_df("row", row_dset, True)
         logger.debug("test that ID's are not converted to numeric - r:  {}".format(r))
         logger.debug("r.index:  {}".format(r.index))
@@ -372,7 +372,7 @@ class TestParseGctx(unittest.TestCase):
         # happy path
         id_list = [0, 1, 2]
         self.assertEqual(int, type(id_list[0]))
-        df = pd.DataFrame({}, index=pd.Series(range(1, 4)).astype(np.int64))
+        df = pd.DataFrame({}, index=pd.Series(list(range(1, 4))).astype(np.int64))
         r = parse_gctx.convert_ids_to_meta_type(id_list, df)
         logger.debug("conversion from regular int to numpy int64 - type(r[0]):  {}".format(type(r[0])))
         self.assertEqual(np.int64, type(r[0]))
@@ -393,7 +393,7 @@ class TestParseGctx(unittest.TestCase):
 
     def test_check_idx_validity(self):
         id_list = [0,1,2]
-        df = pd.DataFrame({}, index=range(5))
+        df = pd.DataFrame({}, index=list(range(5)))
         logger.debug("df.shape:  {}".format(df.shape))
         parse_gctx.check_idx_validity(id_list, df, sort_id = True)
 

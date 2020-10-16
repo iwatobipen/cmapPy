@@ -185,7 +185,7 @@ class TestGctoo(unittest.TestCase):
             GCToo.GCToo(data_df=not_unique_data_df,
                 row_metadata_df=pd.DataFrame(index=["A","B"]),
                 col_metadata_df=pd.DataFrame(index=["a","b","c"]))
-            print(str(not_unique_data_df.columns))
+            print((str(not_unique_data_df.columns)))
             self.assertTrue(str(not_unique_data_df.columns) in str(context.exception))
 
         # rhds are not unique in row_metadata_df
@@ -200,9 +200,9 @@ class TestGctoo(unittest.TestCase):
         # TODO: Add test of only row ids present as metadata
         # TODO: Add test of only col ids present as metadata
 
-        g = GCToo.GCToo(data_df = pd.DataFrame({10:range(13,16), 11:range(16,19), 12:range(19,22)}, index=range(4,7)),
-            row_metadata_df=pd.DataFrame({"a":range(3)}, index=range(4,7)),
-            col_metadata_df=pd.DataFrame({"b":range(7,10)}, index=range(10,13)),
+        g = GCToo.GCToo(data_df = pd.DataFrame({10:list(range(13,16)), 11:list(range(16,19)), 12:list(range(19,22))}, index=list(range(4,7))),
+            row_metadata_df=pd.DataFrame({"a":list(range(3))}, index=list(range(4,7))),
+            col_metadata_df=pd.DataFrame({"b":list(range(7,10))}, index=list(range(10,13))),
             make_multiindex = True)
 
         assert "a" in g.multi_index_df.index.names, g.multi_index_df.index.names

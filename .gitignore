@@ -5,3 +5,4 @@ cmapPy.egg-info/
 .gitignore
 .idea
 docs/build
+*.py.bak
